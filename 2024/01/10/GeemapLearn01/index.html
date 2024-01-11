@@ -16,7 +16,7 @@
 
 
 
-<title>questions when exporting geemap data | Luoyc</title>
+<title>Problems when exporting geemap data | Luoyc</title>
 
 
 
@@ -199,7 +199,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">questions when exporting geemap data</h1>
+            <h1 class="post-title">Problems when exporting geemap data</h1>
             
                 <div class="post-meta">
                     
@@ -246,7 +246,7 @@
 <hr>
 <h2 id="questions-when-exporting-geemap-data"><a href="#questions-when-exporting-geemap-data" class="headerlink" title="questions when exporting geemap data"></a>questions when exporting geemap data</h2><h3 id="1-background"><a href="#1-background" class="headerlink" title="1 background"></a>1 background</h3><p>There are many methods for exporting data in geemap, such as exporting to local drive, exporting to Google Drive and exporting to gee Assets, etc.</p>
 <h3 id="2-experiment"><a href="#2-experiment" class="headerlink" title="2 experiment"></a>2 experiment</h3><p>Today, I tried exporting <code>Image</code> data (I haven’t tried exporting <code>Imagecollectio</code> yet) to loacl drive and Google Drive. The  <code>Image</code> data was <a target="_blank" rel="noopener" href="https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1">Dynamic World V1</a> which was processed into water body data in Wuhan area and the final data was a binary single-band image.</p>
-<h3 id="3-problems"><a href="#3-problems" class="headerlink" title="3 problems"></a>3 problems</h3><h4 id="3-1-problems-1-export-data-to-Google-Drive"><a href="#3-1-problems-1-export-data-to-Google-Drive" class="headerlink" title="3.1 problems 1: export data to Google Drive"></a>3.1 problems 1: export data to Google Drive</h4><p>Through this method, there were two problems when exporting. (1) Data volumn exceeded limit. GEE has a limit on the amount fo data exported a time, so this problem cannot be solved. (2)The exported data is incomplete. When I exported the data in Wuhan area, finally I only got one well data, and the it took a long time. I can’t solve this problem, too.</p>
+<h3 id="3-problems"><a href="#3-problems" class="headerlink" title="3 problems"></a>3 problems</h3><h4 id="3-1-problem-1-export-data-to-Google-Drive"><a href="#3-1-problem-1-export-data-to-Google-Drive" class="headerlink" title="3.1 problem 1: export data to Google Drive"></a>3.1 problem 1: export data to Google Drive</h4><p>Through this method, there were two problems when exporting. (1) Data volumn exceeded limit. GEE has a limit on the amount fo data exported a time, so this problem cannot be solved. (2)The exported data is incomplete. When I exported the data in Wuhan area, finally I only got one well data, and the it took a long time. I can’t solve this problem, too.</p>
 <h4 id="3-2-problem-2-export-data-to-local-drive"><a href="#3-2-problem-2-export-data-to-local-drive" class="headerlink" title="3.2 problem 2: export data to local drive"></a>3.2 problem 2: export data to local drive</h4><p>Geemap provides three methods for exporting data to local drive.<br><strong>(1)original method</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geemap.ee_export_image</span><br></pre></td></tr></table></figure>
 <p>In this method, geemap has a limit on the amount of exported data, so I gave up this method.<br><strong>(2)export after the data is divided</strong></p>
