@@ -469,6 +469,36 @@ input[type="radio"]:not(:checked) + label:after {
 }
 
 
+@font-face {
+  font-family: "iconfont"; /* Project id  */
+  src: url('iconfont.ttf?t=1704964236851') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-csdn:before {
+  content: "\e638";
+}
+
+.icon-qqyinle:before {
+  content: "\e634";
+}
+
+.icon-youxiang:before {
+  content: "\e631";
+}
+
+.icon-wangyiyunyinle:before {
+  content: "\eb7d";
+}
+
+
 .header-logo a {
   padding: 0;
 }
