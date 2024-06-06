@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="google-site-verification" content="02YtHQrVLPqU322Mv2eFGJPJSCXxIvzDgWluBm4L3i8" />
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Luoyc">
+
+
+    <meta name="subtitle" content="luoyc’s Learning">
+
+
+
+
+<title>fast map match configurations | Luoyc</title>
+
+
+
+    <link rel="icon" href="/2.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Luoyc&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Luoyc&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">fast map match configurations</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Luoyc</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">June 3, 2024&nbsp;&nbsp;14:47:31</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/map-matching/">map matching</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <hr>
+<p>创建时间：2024-06-03 14:47:31<br>更新时间：2024-06-03 14:47:31</p>
+<hr>
+<h2 id="fast-map-match环境配置问题"><a href="#fast-map-match环境配置问题" class="headerlink" title="fast map match环境配置问题"></a>fast map match环境配置问题</h2><p>总体按照<a target="_blank" rel="noopener" href="https://fmm-wiki.github.io/%E9%85%8D%E7%BD%AE%EF%BC%8C%E5%85%B6%E4%B8%AD%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%E5%88%A0%E5%8E%BB%E4%BA%86anaconda%E7%8E%AF%E5%A2%83">https://fmm-wiki.github.io/配置，其中安装过程删去了anaconda环境</a><br><img src="https://pic.imgdb.cn/item/6661d4ff5e6d1bfa052aa348.png"></p>
+<h3 id="1-问题"><a href="#1-问题" class="headerlink" title="1 问题"></a>1 问题</h3><p><em><strong><font color=Crimson>wget <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg">https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg</a> 这一步</font></strong></em></p>
+<h4 id="1-1-错误：wget-unable-to-resolve-host-address-‘raw-githubusercontent-com’"><a href="#1-1-错误：wget-unable-to-resolve-host-address-‘raw-githubusercontent-com’" class="headerlink" title="1.1 错误：wget: unable to resolve host address ‘raw.githubusercontent.com’"></a>1.1 错误：wget: unable to resolve host address ‘raw.githubusercontent.com’</h4><h5 id="检查DNS设置"><a href="#检查DNS设置" class="headerlink" title="检查DNS设置"></a>检查DNS设置</h5><h5 id="1-1-1-打开网络连接设置："><a href="#1-1-1-打开网络连接设置：" class="headerlink" title="1.1.1 打开网络连接设置："></a>1.1.1 打开网络连接设置：</h5><p>在任务栏搜索框中输入“网络连接设置”并打开。<br>或者，您可以在控制面板中找到“网络和共享中心”，然后点击“更改适配器设置”。</p>
+<h5 id="1-1-2-选择网络适配器："><a href="#1-1-2-选择网络适配器：" class="headerlink" title="1.1.2 选择网络适配器："></a>1.1.2 选择网络适配器：</h5><p>找到您当前连接的网络适配器（通常是无线或以太网），右键点击并选择“属性”。</p>
+<h5 id="1-1-3-选择IPv4协议属性："><a href="#1-1-3-选择IPv4协议属性：" class="headerlink" title="1.1.3 选择IPv4协议属性："></a>1.1.3 选择IPv4协议属性：</h5><p>在属性窗口中找到“Internet 协议版本 4 (TCP&#x2F;IPv4)”并双击打开属性窗口。</p>
+<h5 id="1-1-4-手动配置DNS服务器："><a href="#1-1-4-手动配置DNS服务器：" class="headerlink" title="1.1.4 手动配置DNS服务器："></a>1.1.4 手动配置DNS服务器：</h5><p>在IPv4属性窗口中，选择“使用以下 DNS 服务器地址”。<br>输入首选和备用DNS服务器的地址。您可以使用公共DNS服务器，如Google DNS（8.8.8.8和8.8.4.4）或Cloudflare DNS（1.1.1.1和1.0.0.1）。<br><code>另一种方法见https://www.cnblogs.com/feipeng8848/p/8555648.html</code></p>
+<h3 id="2-问题"><a href="#2-问题" class="headerlink" title="2 问题"></a>2 问题</h3><p><em><strong><font color=Crimson>apt-cyg install make gcc-g++ cmake gdal libboost-devel libgdal-devel libexpat1-devel libbz2-devel zlib-devel swig python-devel 这一步</font></strong></em></p>
+<h4 id="2-1-错误：Unable-to-locate-package-libexpat1-devel"><a href="#2-1-错误：Unable-to-locate-package-libexpat1-devel" class="headerlink" title="2.1 错误：Unable to locate package libexpat1-devel"></a>2.1 错误：Unable to locate package libexpat1-devel</h4><p>改为装libexpat-devel</p>
+<h3 id="3-问题"><a href="#3-问题" class="headerlink" title="3 问题"></a>3 问题</h3><p><em><strong><font color=Crimson>git clone <a href="mailto:&#103;&#105;&#x74;&#x40;&#x67;&#105;&#x74;&#x68;&#x75;&#x62;&#46;&#99;&#111;&#109;">&#103;&#105;&#x74;&#x40;&#x67;&#105;&#x74;&#x68;&#x75;&#x62;&#46;&#99;&#111;&#109;</a>:cyang-kth&#x2F;fmm.git . 这一步</font></strong></em></p>
+<h5 id="3-1-错误：fatal-Could-not-read-from-remote-repository"><a href="#3-1-错误：fatal-Could-not-read-from-remote-repository" class="headerlink" title="3.1 错误：fatal: Could not read from remote repository."></a>3.1 错误：fatal: Could not read from remote repository.</h5><p>使用git bash在<code>\cygwin64\home\13532\fmm</code>文件夹下<code>git clone git@github.com:cyang-kth/fmm.git .</code></p>
+<h3 id="4-问题"><a href="#4-问题" class="headerlink" title="4 问题"></a>4 问题</h3><p><em><strong><font color=Crimson>cmake .. 这一步</font></strong></em></p>
+<h4 id="4-1-错误：没有cyguv-1-dll"><a href="#4-1-错误：没有cyguv-1-dll" class="headerlink" title="4.1 错误：没有cyguv-1.dll"></a>4.1 错误：没有cyguv-1.dll</h4><p>重装执行安装cygwin的流程，如下图所示步骤中搜索libuv相关的未安装的依赖，全部安装<br><img src="https://pic.imgdb.cn/item/665dab915e6d1bfa0511b065.png" alt="在这里插入图片描述"></p>
+<h4 id="4-2-错误：Could-NOT-find-SWIG-missing-SWIG-EXECUTABLE-SWIG-DIR"><a href="#4-2-错误：Could-NOT-find-SWIG-missing-SWIG-EXECUTABLE-SWIG-DIR" class="headerlink" title="4.2 错误：Could NOT find SWIG (missing: SWIG_EXECUTABLE SWIG_DIR)"></a>4.2 错误：Could NOT find SWIG (missing: SWIG_EXECUTABLE SWIG_DIR)</h4><p>同上图，安装python3-devel</p>
+<h3 id="5-问题"><a href="#5-问题" class="headerlink" title="5 问题"></a>5 问题</h3><p><em><strong><font color=Crimson>make -j8 这一步</font></strong></em><br>将gdal和libgdal-devel版本从3.8.3退回到了3.6.2，同时安装了libgdal32、libgdal34、python-gdal、python3-gdal<br><img src="https://pic.imgdb.cn/item/665dc7535e6d1bfa0530ce88.png"></p>
+<h3 id="6-结语"><a href="#6-结语" class="headerlink" title="6 结语"></a>6 结语</h3><p>流程走下来安装完成，没有报错，具体使用暂未尝试，可能仍存在问题</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Luoyc</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://lemmingless.github.io/2024/06/03/fmm_configuration/">https://lemmingless.github.io/2024/06/03/fmm_configuration/</a></span>
+                    </p>
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/map-matching/"># map matching</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2024/01/10/GeemapLearn01/">Problems when exporting geemap data</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Luoyc | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
