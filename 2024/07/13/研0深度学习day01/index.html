@@ -16,7 +16,7 @@
 
 
 
-<title>fast map match configurations | Luoyc</title>
+<title>研0深度学习day01 | Luoyc</title>
 
 
 
@@ -199,7 +199,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">fast map match configurations</h1>
+            <h1 class="post-title">研0深度学习day01</h1>
             
                 <div class="post-meta">
                     
@@ -208,14 +208,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">June 3, 2024&nbsp;&nbsp;14:47:31</a>
+                        Date: <a href="#">July 13, 2024&nbsp;&nbsp;20:15:13</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/map-matching/">map matching</a>
+                                <a href="/categories/%E7%A0%940%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%89%93%E5%8D%A1/">研0深度学习打卡</a>
                             
                         </span>
                     
@@ -224,24 +224,20 @@
         </header>
 
         <div class="post-content">
-            <hr>
-<p>创建时间：2024-06-03 14:47:31<br>更新时间：2024-06-03 14:47:31</p>
-<hr>
-<h1 id="fast-map-match环境配置问题"><a href="#fast-map-match环境配置问题" class="headerlink" title="fast map match环境配置问题"></a>fast map match环境配置问题</h1><p>总体按照<a target="_blank" rel="noopener" href="https://fmm-wiki.github.io/">Fast map matching</a>配置，其中安装过程删去了anaconda环境<br><img src="https://pic.imgdb.cn/item/6661d4ff5e6d1bfa052aa348.png"></p>
-<h2 id="1-问题"><a href="#1-问题" class="headerlink" title="1 问题"></a>1 问题</h2><p><em><strong><font color=Crimson>wget <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg">https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg</a> 这一步</font></strong></em></p>
-<h3 id="1-1-错误：wget-unable-to-resolve-host-address-‘raw-githubusercontent-com’"><a href="#1-1-错误：wget-unable-to-resolve-host-address-‘raw-githubusercontent-com’" class="headerlink" title="1.1 错误：wget: unable to resolve host address ‘raw.githubusercontent.com’"></a>1.1 错误：wget: unable to resolve host address ‘raw.githubusercontent.com’</h3><h4 id="检查DNS设置"><a href="#检查DNS设置" class="headerlink" title="检查DNS设置"></a>检查DNS设置</h4><h4 id="1-1-1-打开网络连接设置："><a href="#1-1-1-打开网络连接设置：" class="headerlink" title="1.1.1 打开网络连接设置："></a>1.1.1 打开网络连接设置：</h4><p>在任务栏搜索框中输入“网络连接设置”并打开。<br>或者，您可以在控制面板中找到“网络和共享中心”，然后点击“更改适配器设置”。</p>
-<h4 id="1-1-2-选择网络适配器："><a href="#1-1-2-选择网络适配器：" class="headerlink" title="1.1.2 选择网络适配器："></a>1.1.2 选择网络适配器：</h4><p>找到您当前连接的网络适配器（通常是无线或以太网），右键点击并选择“属性”。</p>
-<h4 id="1-1-3-选择IPv4协议属性："><a href="#1-1-3-选择IPv4协议属性：" class="headerlink" title="1.1.3 选择IPv4协议属性："></a>1.1.3 选择IPv4协议属性：</h4><p>在属性窗口中找到“Internet 协议版本 4 (TCP&#x2F;IPv4)”并双击打开属性窗口。</p>
-<h4 id="1-1-4-手动配置DNS服务器："><a href="#1-1-4-手动配置DNS服务器：" class="headerlink" title="1.1.4 手动配置DNS服务器："></a>1.1.4 手动配置DNS服务器：</h4><p>在IPv4属性窗口中，选择“使用以下 DNS 服务器地址”。<br>输入首选和备用DNS服务器的地址。您可以使用公共DNS服务器，如Google DNS（8.8.8.8和8.8.4.4）或Cloudflare DNS（1.1.1.1和1.0.0.1）。<br><code>另一种方法见https://www.cnblogs.com/feipeng8848/p/8555648.html</code></p>
-<h2 id="2-问题"><a href="#2-问题" class="headerlink" title="2 问题"></a>2 问题</h2><p><em><strong><font color=Crimson>apt-cyg install make gcc-g++ cmake gdal libboost-devel libgdal-devel libexpat1-devel libbz2-devel zlib-devel swig python-devel 这一步</font></strong></em></p>
-<h3 id="2-1-错误：Unable-to-locate-package-libexpat1-devel"><a href="#2-1-错误：Unable-to-locate-package-libexpat1-devel" class="headerlink" title="2.1 错误：Unable to locate package libexpat1-devel"></a>2.1 错误：Unable to locate package libexpat1-devel</h3><p>改为装libexpat-devel</p>
-<h2 id="3-问题"><a href="#3-问题" class="headerlink" title="3 问题"></a>3 问题</h2><p><em><strong><font color=Crimson>git clone <a href="mailto:&#x67;&#105;&#116;&#64;&#x67;&#x69;&#x74;&#104;&#117;&#98;&#x2e;&#99;&#111;&#109;">&#x67;&#105;&#116;&#64;&#x67;&#x69;&#x74;&#104;&#117;&#98;&#x2e;&#99;&#111;&#109;</a>:cyang-kth&#x2F;fmm.git . 这一步</font></strong></em></p>
-<h4 id="3-1-错误：fatal-Could-not-read-from-remote-repository"><a href="#3-1-错误：fatal-Could-not-read-from-remote-repository" class="headerlink" title="3.1 错误：fatal: Could not read from remote repository."></a>3.1 错误：fatal: Could not read from remote repository.</h4><p>使用git bash在<code>\cygwin64\home\13532\fmm</code>文件夹下<code>git clone git@github.com:cyang-kth/fmm.git .</code></p>
-<h2 id="4-问题"><a href="#4-问题" class="headerlink" title="4 问题"></a>4 问题</h2><p><em><strong><font color=Crimson>cmake .. 这一步</font></strong></em></p>
-<h3 id="4-1-错误：没有cyguv-1-dll"><a href="#4-1-错误：没有cyguv-1-dll" class="headerlink" title="4.1 错误：没有cyguv-1.dll"></a>4.1 错误：没有cyguv-1.dll</h3><p>重装执行安装cygwin的流程，如下图所示步骤中搜索libuv相关的未安装的依赖，全部安装<br><img src="https://pic.imgdb.cn/item/665dab915e6d1bfa0511b065.png"></p>
-<h3 id="4-2-错误：Could-NOT-find-SWIG-missing-SWIG-EXECUTABLE-SWIG-DIR"><a href="#4-2-错误：Could-NOT-find-SWIG-missing-SWIG-EXECUTABLE-SWIG-DIR" class="headerlink" title="4.2 错误：Could NOT find SWIG (missing: SWIG_EXECUTABLE SWIG_DIR)"></a>4.2 错误：Could NOT find SWIG (missing: SWIG_EXECUTABLE SWIG_DIR)</h3><p>同上图，安装python3-devel</p>
-<h2 id="5-问题"><a href="#5-问题" class="headerlink" title="5 问题"></a>5 问题</h2><p><em><strong><font color=Crimson>make -j8 这一步</font></strong></em><br>将gdal和libgdal-devel版本从3.8.3退回到了3.6.2，同时安装了libgdal32、libgdal34、python-gdal、python3-gdal<br><img src="https://pic.imgdb.cn/item/665dc7535e6d1bfa0530ce88.png"></p>
-<h2 id="6-结语"><a href="#6-结语" class="headerlink" title="6 结语"></a>6 结语</h2><p>流程走下来安装完成，没有报错，具体使用暂未尝试，可能仍存在问题</p>
+            <h1 id="研0深度学习day01"><a href="#研0深度学习day01" class="headerlink" title="研0深度学习day01"></a>研0深度学习day01</h1><h2 id="7月13日进度"><a href="#7月13日进度" class="headerlink" title="7月13日进度"></a>7月13日进度</h2><p>跟着李沐学习深度学习，今天配置好了环境，跑了一个机器学习的代码，1660ti能跑1600多张样本&#x2F;s，要是配个电脑就爽了。到学到了线性代数（课表：<a target="_blank" rel="noopener" href="https://courses.d2l.ai/zh-v2/%EF%BC%89">https://courses.d2l.ai/zh-v2/）</a></p>
+<h2 id="1-问题-from-d2l-import-torch-as-d2l报错"><a href="#1-问题-from-d2l-import-torch-as-d2l报错" class="headerlink" title="1 问题 from d2l import torch as d2l报错"></a>1 问题 <code>from d2l import torch as d2l</code>报错</h2><p>报错<code>ImportError: DLL load failed while importing _imaging: 操作系统无法运行 %1。</code>，截图1.1如下。经过查阅，首先<code>pip uninstall pillow</code>，在<code>pip install pillow</code>。再次运行，报错pillow版本问题，如图1.2所示，执行<code>pip install pillow==10.3.0</code>，并且重启Kernel，再次运行代码，成功运行。<br><img src="https://pic.imgdb.cn/item/6691f61ad9c307b7e9a9b998.png"></p>
+<p style="text-align: center;color:red">图 1.1</p>
+
+<p><img src="https://pic.imgdb.cn/item/66922904d9c307b7e9ea1d76.png"></p>
+<p style="text-align: center;color:red">图 1.2</p>
+
+
+<h2 id="2-练习"><a href="#2-练习" class="headerlink" title="2 练习"></a>2 练习</h2><h3 id="2-1-pytorch-chapter-preliminaries-pandas-ipynb-小节"><a href="#2-1-pytorch-chapter-preliminaries-pandas-ipynb-小节" class="headerlink" title="2.1 pytorch\chapter_preliminaries\pandas.ipynb 小节"></a>2.1 pytorch\chapter_preliminaries\pandas.ipynb 小节</h3><p>创建包含更多行和列的原始数据集。</p>
+<ol>
+<li>删除缺失值最多的列。</li>
+<li>将预处理后的数据集转换为张量格式。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">name_of_column = data.columns.values</span><br><span class="line">num_of_nan = <span class="number">0</span></span><br><span class="line">name_of_most_nan = <span class="string">&#x27;NumRooms&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(name_of_column)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,data.shape[<span class="number">1</span>]):</span><br><span class="line">	x = <span class="built_in">sum</span>(x != x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">list</span>(data[name_of_column[i]]))</span><br><span class="line">	<span class="keyword">if</span> num_of_nan &lt; x:</span><br><span class="line">		name_of_most_nan = name_of_column[i]</span><br><span class="line">		num_of_nan = x</span><br><span class="line"><span class="built_in">print</span>(name_of_most_nan)</span><br><span class="line">data_ = data.drop(columns=name_of_most_nan)</span><br><span class="line">data_</span><br></pre></td></tr></table></figure>
+没找到标准答案，就这样了</li>
+</ol>
 
         </div>
 
@@ -256,7 +252,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://lemmingless.github.io/2024/06/03/fmm_configuration/">https://lemmingless.github.io/2024/06/03/fmm_configuration/</a></span>
+                        <span><a href="https://lemmingless.github.io/2024/07/13/%E7%A0%940%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0day01/">https://lemmingless.github.io/2024/07/13/%E7%A0%940%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0day01/</a></span>
                     </p>
                 
                 
@@ -269,10 +265,6 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
-                    
-                        <a href="/tags/map-matching/"># map matching</a>
-                    
-                        
                 </span>
             </div>
             <div>
@@ -283,10 +275,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2024/06/14/NeuroMLR_learn/">learn NeurMLR</a>
             
-            
-            <a class="next" rel="next" href="/2024/01/10/GeemapLearn01/">Problems when exporting geemap data</a>
+            <a class="next" rel="next" href="/2024/06/14/NeuroMLR_learn/">learn NeurMLR</a>
             
         </section>
 
