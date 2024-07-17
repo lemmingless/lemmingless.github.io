@@ -16,7 +16,7 @@
 
 
 
-<title>Hello World | Luoyc</title>
+<title>研0深度学习day05 | Luoyc</title>
 
 
 
@@ -199,7 +199,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hello World</h1>
+            <h1 class="post-title">研0深度学习day05</h1>
             
                 <div class="post-meta">
                     
@@ -208,25 +208,32 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">January 4, 2024&nbsp;&nbsp;12:58:13</a>
+                        Date: <a href="#">July 17, 2024&nbsp;&nbsp;15:05:13</a>
                         </span>
                     
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E7%A0%940%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%89%93%E5%8D%A1/">研0深度学习打卡</a>
+                            
+                        </span>
                     
                 </div>
             
         </header>
 
         <div class="post-content">
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<p>punlic下<code>hexo clean</code>, <code>hexo server</code>, <code>hexo g</code>, <code>hexo d</code></p>
+            <h1 id="研0深度学习day05"><a href="#研0深度学习day05" class="headerlink" title="研0深度学习day05"></a>研0深度学习day05</h1><h2 id="7月17日进度"><a href="#7月17日进度" class="headerlink" title="7月17日进度"></a>7月17日进度</h2><p>看完了<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1KA411N7Px">自动求导</a>、<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PX4y1g7KC">线性回归</a>和<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PX4y1g7KC?p=2">基础优化方法</a>，说实话有点慢。上一篇还说以后不会经常有事了，明天就又要出去玩……<br>另外，还是下手了thinkbook14+锐龙</p>
+<h2 id="1-问题"><a href="#1-问题" class="headerlink" title="1 问题"></a>1 问题</h2><h3 id="1-1-关于梯度"><a href="#1-1-关于梯度" class="headerlink" title="1.1 关于梯度"></a>1.1 关于梯度</h3><p><code>pytorch\chapter_preliminaries\autograd.ipynb</code>中的问题<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">x = torch.arange(<span class="number">4.0</span>)</span><br><span class="line">x.requires_grad_(<span class="literal">True</span>)  <span class="comment"># 等价于x=torch.arange(4.0,requires_grad=True)</span></span><br><span class="line">x.grad  <span class="comment"># 默认值是None</span></span><br><span class="line">y = <span class="number">2</span> * torch.dot(x, x)</span><br><span class="line">y.backward()</span><br><span class="line"><span class="built_in">print</span>(x.grad)</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>tensor([ 0.,  4.,  8., 12.])</p>
+</blockquote>
+<p>梯度的定义如下公式$$grandf(x_{ 0 },x_{ 1 },…,x_{ n } )=(\frac{ \partial f }{ \partial x_{ 0 } } ,…,\frac{ \partial f }{ \partial x_{ j } },…,\frac{ \partial f }{ \partial x_{ n } })$$</p>
+<p>得到输出结果$tensor([0.,4.,8.,12.])$的计算过程为$y=2XX^{T}$，$X=(x_{1},x_{2},x_{3},x_{4})$，那么$y$可以写成$y=2(x_{1}^{2}, x_{2}^{2},x_{3}^{2},x_{4}^{2})$，按上面的梯度公式，$$\frac{\partial y}{x_{1}} =4x_{1},\frac{\partial y}{x_{2}} =4x_{2},\frac{\partial y}{x_{3}} =4x_{3},\frac{\partial y}{x_{4}} =4x_{4}$$代入$X=(0,1,2,3)$，得到结果$x.grad=tensor([0.,4.,8.,12.])$</p>
+<p>同理，下面代码中，$y=x.sum()$表示着$y=x_{1}+x_{2}+x_{3}+x_{4}$，再按梯度公式，得到结果$x.grad()=tensor([1.,1.,1.,1.])$<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在默认情况下，PyTorch会累积梯度，我们需要清除之前的值</span></span><br><span class="line">x.grad.zero_()</span><br><span class="line">y = x.<span class="built_in">sum</span>()</span><br><span class="line"><span class="built_in">print</span>(x.<span class="built_in">sum</span>())</span><br><span class="line">y.backward()</span><br><span class="line">x.grad</span><br></pre></td></tr></table></figure></p>
+<h3 id="1-2-关于损失函数最优解"><a href="#1-2-关于损失函数最优解" class="headerlink" title="1.2 关于损失函数最优解"></a>1.2 关于损失函数最优解</h3><p><code>pytorch\chapter_linear-networks\linear-regression.ipynb</code>中的解析解<br><img src="https://pic.imgdb.cn/item/66979f73d9c307b7e94fcdcc.png" alt=""><br>（西瓜书55页公式3.11，南瓜书3.2.8式3.11的推导）</p>
+<h2 id="2-凑篇幅"><a href="#2-凑篇幅" class="headerlink" title="2 凑篇幅"></a>2 凑篇幅</h2><p>刚拍的<br><img src="https://pic.imgdb.cn/item/6697aa95d9c307b7e95d2f1a.jpg" alt=""><br><img src="https://pic.imgdb.cn/item/6697aaadd9c307b7e95d4529.jpg" alt=""><br><img src="https://pic.imgdb.cn/item/6697aab8d9c307b7e95d50a0.jpg" alt=""></p>
 
         </div>
 
@@ -241,7 +248,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://lemmingless.github.io/2024/01/04/hello-world/">https://lemmingless.github.io/2024/01/04/hello-world/</a></span>
+                        <span><a href="https://lemmingless.github.io/2024/07/17/%E7%A0%940%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0day05/">https://lemmingless.github.io/2024/07/17/%E7%A0%940%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0day05/</a></span>
                     </p>
                 
                 
@@ -264,10 +271,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2024/01/10/GeemapLearn01/">Problems when exporting geemap data</a>
             
-            
-            <a class="next" rel="next" href="/2023/04/14/react+cesium/">react+cesium配置问题</a>
+            <a class="next" rel="next" href="/2024/07/17/%E7%A0%940%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0day020304/">研0深度学习day020304</a>
             
         </section>
 
