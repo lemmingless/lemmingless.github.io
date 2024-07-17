@@ -224,34 +224,54 @@
         </header>
 
         <div class="post-content">
-            <hr>
-<p>创建时间：2024-01-10 20:41:31<br>更新时间：2024-01-11 22:22:02</p>
-<hr>
-<h2 id="关于geemap数据导出问题"><a href="#关于geemap数据导出问题" class="headerlink" title="关于geemap数据导出问题"></a>关于geemap数据导出问题</h2><h3 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h3><p>geemap中提供了多种数据导出方法，主要有<strong>导出到本地</strong>、<strong>到Google Drive</strong>、<strong>到gee的Assets</strong>等。</p>
-<h3 id="2-实验内容"><a href="#2-实验内容" class="headerlink" title="2 实验内容"></a>2 实验内容</h3><p>今天的实验中，我尝试了<code>Image</code>（<code>Imagecollection</code>还没试）导出到本地、到Google Drive两种方法，<code>Image</code>为由<a target="_blank" rel="noopener" href="https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1">Dynamic World V1</a>处理得到的武汉市水体数据，为单波段二值影像。</p>
-<h3 id="3-问题"><a href="#3-问题" class="headerlink" title="3 问题"></a>3 问题</h3><h4 id="3-1-问题1：导出到Google-Drive"><a href="#3-1-问题1：导出到Google-Drive" class="headerlink" title="3.1 问题1：导出到Google Drive"></a>3.1 问题1：导出到Google Drive</h4><p>使用这种方法，导出会出现两个问题：（1）数据量超限。gee对单次数据导出的数据量有限制，这个问题未解决。（2）数据导出不完整。选择武汉市为导出区域，但是最后只得到一井的数据，并且耗时长，这个问题未解决。</p>
-<h4 id="3-2-问题2：导出到本地"><a href="#3-2-问题2：导出到本地" class="headerlink" title="3.2 问题2：导出到本地"></a>3.2 问题2：导出到本地</h4><p>关于导出到本地，geemap提供了3种方法。<br><strong>（1）原始的导出方法，有数据量大小限制</strong></p>
+            <hr />
+<p>创建时间：2024-01-10 20:41:31<br />
+更新时间：2024-01-11 22:22:02</p>
+<hr />
+<h2 id="关于geemap数据导出问题"><a class="markdownIt-Anchor" href="#关于geemap数据导出问题"></a> 关于geemap数据导出问题</h2>
+<h3 id="1-背景"><a class="markdownIt-Anchor" href="#1-背景"></a> 1 背景</h3>
+<p>geemap中提供了多种数据导出方法，主要有<strong>导出到本地</strong>、<strong>到Google Drive</strong>、<strong>到gee的Assets</strong>等。</p>
+<h3 id="2-实验内容"><a class="markdownIt-Anchor" href="#2-实验内容"></a> 2 实验内容</h3>
+<p>今天的实验中，我尝试了<code>Image</code>（<code>Imagecollection</code>还没试）导出到本地、到Google Drive两种方法，<code>Image</code>为由<a target="_blank" rel="noopener" href="https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1">Dynamic World V1</a>处理得到的武汉市水体数据，为单波段二值影像。</p>
+<h3 id="3-问题"><a class="markdownIt-Anchor" href="#3-问题"></a> 3 问题</h3>
+<h4 id="31-问题1导出到google-drive"><a class="markdownIt-Anchor" href="#31-问题1导出到google-drive"></a> 3.1 问题1：导出到Google Drive</h4>
+<p>使用这种方法，导出会出现两个问题：（1）数据量超限。gee对单次数据导出的数据量有限制，这个问题未解决。（2）数据导出不完整。选择武汉市为导出区域，但是最后只得到一井的数据，并且耗时长，这个问题未解决。</p>
+<h4 id="32-问题2导出到本地"><a class="markdownIt-Anchor" href="#32-问题2导出到本地"></a> 3.2 问题2：导出到本地</h4>
+<p>关于导出到本地，geemap提供了3种方法。<br />
+<strong>（1）原始的导出方法，有数据量大小限制</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geemap.ee_export_image</span><br></pre></td></tr></table></figure>
-<p>有数据量大小限制，不好用<br><strong>（2）将影像划分再导出的方法</strong></p>
+<p>有数据量大小限制，不好用<br />
+<strong>（2）将影像划分再导出的方法</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geemap.download_ee_image</span><br></pre></td></tr></table></figure>
-<p>一开始一直尝试用这种方法，函数简单，但是导出的影像一直不对，全为空，尝试很久找不到解决办法。<br><strong>（3）手动指定划分策略，再逐井导出</strong></p>
+<p>一开始一直尝试用这种方法，函数简单，但是导出的影像一直不对，全为空，尝试很久找不到解决办法。<br />
+<strong>（3）手动指定划分策略，再逐井导出</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geemap.download_ee_image_tiles</span><br></pre></td></tr></table></figure>
-<p>最终的解决办法，能够正确的导出影像，导出速度快。使用方法参考吴老师<a target="_blank" rel="noopener" href="https://book.geemap.org/chapters/07_data_export.html">文档</a>、<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Ym5-xn5YRUE&list=PLAxJ4-o7ZoPfR_ZR7pv6plCLnwO-L2IUd&index=4">YouTube教程</a>。<br>我的<code>geemap.download_ee_image_tiles</code>代码</p>
+<p>最终的解决办法，能够正确的导出影像，导出速度快。使用方法参考吴老师<a target="_blank" rel="noopener" href="https://book.geemap.org/chapters/07_data_export.html">文档</a>、<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Ym5-xn5YRUE&amp;list=PLAxJ4-o7ZoPfR_ZR7pv6plCLnwO-L2IUd&amp;index=4">YouTube教程</a>。<br />
+我的<code>geemap.download_ee_image_tiles</code>代码</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fishnet = geemap.fishnet(wuhan_geojson_ee.geometry(), rows=<span class="number">4</span>, cols=<span class="number">4</span>, delta=<span class="number">0.5</span>)</span><br><span class="line">out_dir = <span class="string">&#x27;wuhan_dw_water&#x27;</span></span><br><span class="line">geemap.download_ee_image_tiles(</span><br><span class="line">    dw_water, fishnet, out_dir, prefix=<span class="string">&quot;dw&quot;</span>, crs=<span class="string">&quot;EPSG:3857&quot;</span>, scale=<span class="number">10</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<hr>
+<hr />
+<hr />
 <p><span style="font-size: 2.2em; color: #4169E1"><em><strong>Below is the English vision(for learning English)</strong></em></span></p>
-<hr>
-<hr>
-<h2 id="questions-when-exporting-geemap-data"><a href="#questions-when-exporting-geemap-data" class="headerlink" title="questions when exporting geemap data"></a>questions when exporting geemap data</h2><h3 id="1-background"><a href="#1-background" class="headerlink" title="1 background"></a>1 background</h3><p>There are many methods for exporting data in geemap, such as exporting to local drive, exporting to Google Drive and exporting to gee Assets, etc.</p>
-<h3 id="2-experiment"><a href="#2-experiment" class="headerlink" title="2 experiment"></a>2 experiment</h3><p>Today, I tried exporting <code>Image</code> data (I haven’t tried exporting <code>Imagecollectio</code> yet) to loacl drive and Google Drive. The  <code>Image</code> data was <a target="_blank" rel="noopener" href="https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1">Dynamic World V1</a> which was processed into water body data in Wuhan area and the final data was a binary single-band image.</p>
-<h3 id="3-problems"><a href="#3-problems" class="headerlink" title="3 problems"></a>3 problems</h3><h4 id="3-1-problem-1-export-data-to-Google-Drive"><a href="#3-1-problem-1-export-data-to-Google-Drive" class="headerlink" title="3.1 problem 1: export data to Google Drive"></a>3.1 problem 1: export data to Google Drive</h4><p>Through this method, there were two problems when exporting. (1) Data volumn exceeded limit. GEE has a limit on the amount fo data exported a time, so this problem cannot be solved. (2)The exported data is incomplete. When I exported the data in Wuhan area, finally I only got one well data, and the it took a long time. I can’t solve this problem, too.</p>
-<h4 id="3-2-problem-2-export-data-to-local-drive"><a href="#3-2-problem-2-export-data-to-local-drive" class="headerlink" title="3.2 problem 2: export data to local drive"></a>3.2 problem 2: export data to local drive</h4><p>Geemap provides three methods for exporting data to local drive.<br><strong>(1)original method</strong></p>
+<hr />
+<hr />
+<h2 id="questions-when-exporting-geemap-data"><a class="markdownIt-Anchor" href="#questions-when-exporting-geemap-data"></a> questions when exporting geemap data</h2>
+<h3 id="1-background"><a class="markdownIt-Anchor" href="#1-background"></a> 1 background</h3>
+<p>There are many methods for exporting data in geemap, such as exporting to local drive, exporting to Google Drive and exporting to gee Assets, etc.</p>
+<h3 id="2-experiment"><a class="markdownIt-Anchor" href="#2-experiment"></a> 2 experiment</h3>
+<p>Today, I tried exporting <code>Image</code> data (I haven’t tried exporting <code>Imagecollectio</code> yet) to loacl drive and Google Drive. The  <code>Image</code> data was <a target="_blank" rel="noopener" href="https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1">Dynamic World V1</a> which was processed into water body data in Wuhan area and the final data was a binary single-band image.</p>
+<h3 id="3-problems"><a class="markdownIt-Anchor" href="#3-problems"></a> 3 problems</h3>
+<h4 id="31-problem-1-export-data-to-google-drive"><a class="markdownIt-Anchor" href="#31-problem-1-export-data-to-google-drive"></a> 3.1 problem 1: export data to Google Drive</h4>
+<p>Through this method, there were two problems when exporting. (1) Data volumn exceeded limit. GEE has a limit on the amount fo data exported a time, so this problem cannot be solved. (2)The exported data is incomplete. When I exported the data in Wuhan area, finally I only got one well data, and the it took a long time. I can’t solve this problem, too.</p>
+<h4 id="32-problem-2-export-data-to-local-drive"><a class="markdownIt-Anchor" href="#32-problem-2-export-data-to-local-drive"></a> 3.2 problem 2: export data to local drive</h4>
+<p>Geemap provides three methods for exporting data to local drive.<br />
+<strong>(1)original method</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geemap.ee_export_image</span><br></pre></td></tr></table></figure>
-<p>In this method, geemap has a limit on the amount of exported data, so I gave up this method.<br><strong>(2)export after the data is divided</strong></p>
+<p>In this method, geemap has a limit on the amount of exported data, so I gave up this method.<br />
+<strong>(2)export after the data is divided</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geemap.download_ee_image</span><br></pre></td></tr></table></figure>
-<p>I tried this method many times at first, because this code is simple. But the exported data was always false. The image was null. I tried to solve it for a long time, but finally I failed.<br><strong>(3)export after dividing the data by yourself</strong><br>Through this method, I got the correct data finally and this method run fast. For how to use this function, please refe to Dr. Wu’s <a target="_blank" rel="noopener" href="https://book.geemap.org/chapters/07_data_export.html">document</a> and <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Ym5-xn5YRUE&list=PLAxJ4-o7ZoPfR_ZR7pv6plCLnwO-L2IUd&index=4">YouTube</a>. Below is my code using <code>geemap.download_ee_image_tiles</code>.</p>
+<p>I tried this method many times at first, because this code is simple. But the exported data was always false. The image was null. I tried to solve it for a long time, but finally I failed.<br />
+<strong>(3)export after dividing the data by yourself</strong><br />
+Through this method, I got the correct data finally and this method run fast. For how to use this function, please refe to Dr. Wu’s <a target="_blank" rel="noopener" href="https://book.geemap.org/chapters/07_data_export.html">document</a> and <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Ym5-xn5YRUE&amp;list=PLAxJ4-o7ZoPfR_ZR7pv6plCLnwO-L2IUd&amp;index=4">YouTube</a>. Below is my code using <code>geemap.download_ee_image_tiles</code>.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fishnet = geemap.fishnet(wuhan_geojson_ee.geometry(), rows=<span class="number">4</span>, cols=<span class="number">4</span>, delta=<span class="number">0.5</span>)</span><br><span class="line">out_dir = <span class="string">&#x27;wuhan_dw_water&#x27;</span></span><br><span class="line">geemap.download_ee_image_tiles(</span><br><span class="line">    dw_water, fishnet, out_dir, prefix=<span class="string">&quot;dw&quot;</span>, crs=<span class="string">&quot;EPSG:3857&quot;</span>, scale=<span class="number">10</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
         </div>
