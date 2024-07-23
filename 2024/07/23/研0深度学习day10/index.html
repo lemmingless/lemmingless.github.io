@@ -16,7 +16,7 @@
 
 
 
-<title>研0深度学习day01 | Luoyc</title>
+<title>研0深度学习day10 | Luoyc</title>
 
 
 
@@ -43,6 +43,45 @@
 
     
     
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
         
     
 
@@ -199,7 +238,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">研0深度学习day01</h1>
+            <h1 class="post-title">研0深度学习day10</h1>
             
                 <div class="post-meta">
                     
@@ -208,7 +247,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">July 13, 2024&nbsp;&nbsp;20:15:13</a>
+                        Date: <a href="#">July 23, 2024&nbsp;&nbsp;22:20:13</a>
                         </span>
                     
                     
@@ -224,21 +263,10 @@
         </header>
 
         <div class="post-content">
-            <h1 id="研0深度学习day01"><a href="#研0深度学习day01" class="headerlink" title="研0深度学习day01"></a>研0深度学习day01</h1><h2 id="7月13日进度"><a href="#7月13日进度" class="headerlink" title="7月13日进度"></a>7月13日进度</h2><p>跟着李沐学习深度学习，今天配置好了环境，跑了一个机器学习的代码，1660ti能跑1600多张样本/s，要是配个电脑就爽了。到学到了线性代数（课表：<a target="_blank" rel="noopener" href="https://courses.d2l.ai/zh-v2/）">https://courses.d2l.ai/zh-v2/）</a></p>
-<h2 id="1-问题-from-d2l-import-torch-as-d2l报错"><a href="#1-问题-from-d2l-import-torch-as-d2l报错" class="headerlink" title="1 问题 from d2l import torch as d2l报错"></a>1 问题 <code>from d2l import torch as d2l</code>报错</h2><p>报错<code>ImportError: DLL load failed while importing _imaging: 操作系统无法运行 %1。</code>，截图1.1如下。经过查阅，首先<code>pip uninstall pillow</code>，在<code>pip install pillow</code>。再次运行，报错pillow版本问题，如图1.2所示，执行<code>pip install pillow==10.3.0</code>，并且重启Kernel，再次运行代码，成功运行。<br><img src="https://pic.imgdb.cn/item/6691f61ad9c307b7e9a9b998.png" alt=""></p>
-<p style="text-align: center;color:red">图 1.1</p>
-
-<p><img src="https://pic.imgdb.cn/item/66922904d9c307b7e9ea1d76.png" alt=""></p>
-<p style="text-align: center;color:red">图 1.2</p>
-
-
-<h2 id="2-练习"><a href="#2-练习" class="headerlink" title="2 练习"></a>2 练习</h2><h3 id="2-1-pytorch-chapter-preliminaries-pandas-ipynb-小节"><a href="#2-1-pytorch-chapter-preliminaries-pandas-ipynb-小节" class="headerlink" title="2.1 pytorch\chapter_preliminaries\pandas.ipynb 小节"></a>2.1 pytorch\chapter_preliminaries\pandas.ipynb 小节</h3><p>创建包含更多行和列的原始数据集。</p>
-<ol>
-<li>删除缺失值最多的列。</li>
-<li>将预处理后的数据集转换为张量格式。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">name_of_column = data.columns.values</span><br><span class="line">num_of_nan = <span class="number">0</span></span><br><span class="line">name_of_most_nan = <span class="string">&#x27;NumRooms&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(name_of_column)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,data.shape[<span class="number">1</span>]):</span><br><span class="line">	x = <span class="built_in">sum</span>(x != x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">list</span>(data[name_of_column[i]]))</span><br><span class="line">	<span class="keyword">if</span> num_of_nan &lt; x:</span><br><span class="line">		name_of_most_nan = name_of_column[i]</span><br><span class="line">		num_of_nan = x</span><br><span class="line"><span class="built_in">print</span>(name_of_most_nan)</span><br><span class="line">data_ = data.drop(columns=name_of_most_nan)</span><br><span class="line">data_</span><br></pre></td></tr></table></figure>
-没找到标准答案，就这样了</li>
-</ol>
-
+            <h1 id="研0深度学习day10"><a href="#研0深度学习day10" class="headerlink" title="研0深度学习day10"></a>研0深度学习day10</h1><h2 id="7月23日进度"><a href="#7月23日进度" class="headerlink" title="7月23日进度"></a>7月23日进度</h2><p>这几天都很日心，今天学了<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PX4y1g7KC?p=3">线性回归的从零开始实现</a> and <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PX4y1g7KC?p=4">线性回归的简洁实现</a></p>
+<h1 id="1-记录"><a href="#1-记录" class="headerlink" title="1 记录"></a>1 记录</h1><p><code>pytorch\chapter_linear-networks\linear-regression-scratch.ipynb</code>中</p>
+<h2 id="1-1"><a href="#1-1" class="headerlink" title="1.1"></a>1.1</h2><p>关于$$\mathbf{y}= \mathbf{X} \mathbf{w} + b + \mathbf\epsilon.$$<br>有这么一段话（features对应x，labels对应y）<br><img src="https://pic.imgdb.cn/item/669f5d22d9c307b7e9c72b72.png" alt=""><br>写出来就是$$\begin{pmatrix}<br> a_{1}\\a_{2}\\<br> …\\a_{n}<br>\end{pmatrix}=\begin{pmatrix}b_{11}&amp;b_{12}\\b_{21}&amp;b_{22}\\···<br>  &amp;···\\<br>  b_{n1}&amp;b_{n2}<br>\end{pmatrix}\begin{pmatrix}<br> w_{1}\\w_{2}<br>\end{pmatrix}+b+\epsilon$$</p>
+<h2 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h2>
         </div>
 
         
@@ -252,7 +280,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://lemmingless.github.io/2024/07/13/%E7%A0%940%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0day01/">https://lemmingless.github.io/2024/07/13/%E7%A0%940%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0day01/</a></span>
+                        <span><a href="https://lemmingless.github.io/2024/07/23/%E7%A0%940%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0day10/">https://lemmingless.github.io/2024/07/23/%E7%A0%940%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0day10/</a></span>
                     </p>
                 
                 
@@ -275,10 +303,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2024/07/17/%E7%A0%940%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0day020304/">研0深度学习day020304</a>
             
-            
-            <a class="next" rel="next" href="/2024/06/14/NeuroMLR_learn/">learn NeurMLR</a>
+            <a class="next" rel="next" href="/2024/07/17/%E7%A0%940%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0day05/">研0深度学习day05</a>
             
         </section>
 
